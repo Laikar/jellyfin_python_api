@@ -1,0 +1,48 @@
+[project]
+name = "jellyfin_api_lib"
+version = "0.1.0"
+description = "A client library for accessing Jellyfin API"
+authors = [
+    {name = "David", email = "david@laikar.moe"},
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "httpx>=0.20.0,<0.28.0",
+    "attrs>=21.3.0",
+    "python-dateutil>=2.8.0",
+    "result>=0.16.1",
+]
+license = {text = "MIT"}
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+package-type = "library"
+distribution = true
+
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest",
+    "pytest-xdist",
+    "docker",
+    "podman",
+    "testcontainers"
+]
+
+#Ruff Settings
+
+[tool.ruff]
+line-length = 160
+
+[tool.ruff.lint]
+select = ["F", "I", "UP"]
+
+# Pytest Settings 
+
+[tool.pytest.ini_options]
+addopts = [
+    "--numprocesses=auto",
+    "--import-mode=importlib",
+]
